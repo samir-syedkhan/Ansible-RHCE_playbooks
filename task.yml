@@ -1,0 +1,30 @@
+---
+- name: daily tasks playbook
+  hosts: dev
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Create directory in /tmp/testdir
+      file:
+        path: /tmp/testdir
+        state: directory
+
+    - name: Copy /etc/fstab file to /tmp/testdir
+      copy:
+        src: /etc/fstab
+        dest: /tmp/testdir/fstab
+
+    - name: Install required packages
+      yum:
+        name:
+          - httpd
+          - wget
+        state: present
+
+    - name: Start and enable httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: true
+

@@ -1,0 +1,8 @@
+- hosts: dev
+  vars:
+    salutations: Hello Everyone
+    tasks:
+      - name: example of user defined variables.
+        debug:
+          msg: " {{ salutations }}"
+

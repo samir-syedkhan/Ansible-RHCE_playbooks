@@ -1,0 +1,17 @@
+---
+- name: registring the variables in ansible
+  hosts: dev
+  become: true
+  tasks:
+    - name: Installing HTTPD on nodes
+      yum:
+        name: httpd
+        state: installed
+
+    - name: Apache version and storing in an variable.
+      command: httpd -v
+      register: ver
+     
+    - debug:
+        var: ver.stdout
+...      

@@ -1,0 +1,6 @@
+---
+- hosts: locathost
+  tasks:
+    - name: Ansible builtin variable playbook
+      debug:
+        msg: "{{ inventory_hostname }}"

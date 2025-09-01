@@ -1,0 +1,16 @@
+---
+- name: registring the ansible variable
+  hosts: dev
+  tasks:
+    - name: checking the hardware information
+      command: uname -m
+      register: abc
+
+    - debug:
+        var: abc.stdout
+
+    - name: save the information over the nodes.
+      copy:
+        content: "This is the hardware mode {{ abc.stdout }}"
+        dest: /tmp/hwmode.txt      
+...    

@@ -1,0 +1,19 @@
+---
+- name: Example of sring type playbook variable.
+  hosts: dev
+  vars:
+    apache: httpd
+    apache_root: /var/www/html
+    tasks:
+      - name: installing apache HTTPD server
+        yum:
+          name: "{{ apache }}"
+          state: installed
+      - name: startine and enable the httpd service
+        service:
+          name: "{{ apache }}"
+          state: started
+          enable: true
+      - name: creating "{{ apache_root }}" directory
+        file:
+          path: "  
