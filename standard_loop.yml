@@ -1,0 +1,17 @@
+---
+- name: Using standard loop in playbook
+  hosts: all
+  become: true
+  tasks:
+    - name: Adding user accounts.
+      user:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - john
+        - michael
+        - donald
+        - lucy
+        - jhonny
+...  
+          

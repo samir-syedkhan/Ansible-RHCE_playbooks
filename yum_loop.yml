@@ -1,0 +1,19 @@
+---
+- name: Ansible loop playbook for yum module
+  hosts: all
+  become: true
+  tasks:
+    - name: Using yum with loop
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - zsh
+        - vsftpd
+        - httpd
+        - ftp
+        - wget
+...
+
+
+#here we can use the list of packages directly without mentioning item as list is supported for packages.
