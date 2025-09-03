@@ -1,0 +1,17 @@
+---
+- name: Loops in Ansible
+  hosts: all
+  become: true
+  tasks:
+    - name: creating users and adding them in the wheel group.
+      user:
+        name: "{{ item }}"
+        state: present
+        group: wheel
+      loop:
+        - mushtaq
+        - usman
+        - taif
+        - islam
+        - nejat
+...
