@@ -1,0 +1,33 @@
+---
+- name: using loop in my playbook.
+  hosts: all
+  become: true
+  tasks:
+    - name: creating groups.
+      ansible.builtin.group:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - dev
+        - test
+        - ua
+        - pre-prod
+        - prod
+
+    - name: creating multiple users using loop.
+      ansible.builtin.user:
+        name: "{{ item.user_name }}"
+        groups: "{{ item.group_name }}"
+        state: present
+      loop:
+        - user_name: newyork
+          group_name: dev
+        - user_name: london
+          group_name: test
+        - user_name: dubai
+          group_name: ua
+        - user_name: doha
+          group_name: pre-prod
+        - user_name: islamabd
+          group_name: prod
+

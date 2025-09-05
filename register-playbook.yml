@@ -1,0 +1,17 @@
+---
+- name: using register in my plsybook
+  hosts: all
+  tasks:
+    - name: creating jamal user.
+      ansible.builtin.user:
+        name: jamal
+        shell: /sbin/nologin
+        comment: "This is jamal user for testing purpose."
+        state: present
+      register: user_output
+
+    - name: printing user_output value.
+      ansible.builtin.debug:
+        var: user_output.state
+
+

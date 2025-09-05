@@ -1,0 +1,13 @@
+user_management:
+  dev:
+    user_1: john
+    user_2: michael
+
+  test:
+    user_1: natasha
+    user_2: james
+
+  prod:
+    user_1: rojer
+    user_2: flyer
+

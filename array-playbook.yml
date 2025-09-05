@@ -1,0 +1,16 @@
+---
+- name: using array in my playbook
+  hosts: dev
+  vars_files:
+    - array-var.txt
+  tasks:
+    - name: using array to create groups and add users in that group
+      ansible.builtin.user:
+        name: "{{ user_management.test.user_2 }}"
+        state: present
+
+    - name: using array to create groups and add users in that group
+      ansible.builtin.user:
+        name: "{{ user_management.dev.user_1 }}"
+        state: present
+
