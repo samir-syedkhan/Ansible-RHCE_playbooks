@@ -1,0 +1,9 @@
+---
+- name: creating user for each host
+  hosts: all
+  tasks:
+    - name: creating different user on each hosts
+      ansible.builin.user:
+        name: "{{ user01 }}"
+        state: present
+

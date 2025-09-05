@@ -1,9 +1,9 @@
 ---
 - name: using variable in my playbook
   hosts: dev
-  vars:
-    - group_name: tester
-    - user_name: paul
+  vars_files:
+    - var-values.yml
+
   tasks:
     - name: creating tester group
       ansible.builtin.group:
