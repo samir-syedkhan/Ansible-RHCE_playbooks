@@ -1,0 +1,16 @@
+---
+- name: Ansible standard loop file to create and add users in wheel group.
+  hosts: dev
+  vars_files:
+    - /home/ansible/automation/playbooks/users.yml
+  become: true
+  tasks:
+    - name: Adding user accounts with admin access
+      user:
+        name: "{{ item }}"
+        state: present
+        group: wheel
+      with_items:
+        - "{{ users }}"
+...
+    

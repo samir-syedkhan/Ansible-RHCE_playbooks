@@ -1,0 +1,12 @@
+---
+- name: Ansible laybook to add users in wheel group
+  hosts: dev
+  become: true
+  tasks:
+    - name: creating and  adding users
+      user:
+        name: "{{ item }}"
+        state: present
+        group: wheel
+      with_lines: cat myusers
+...

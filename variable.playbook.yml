@@ -1,0 +1,18 @@
+---
+- name: using variable in my playbook
+  hosts: dev
+  vars:
+    - group_name: tester
+    - user_name: paul
+  tasks:
+    - name: creating tester group
+      ansible.builtin.group:
+        name: " {{ group_name }}"
+        state: present
+
+    - name: creating vijay user
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        groups: "{{ group_name }}"
+        state: present
+               
