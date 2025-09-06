@@ -1,0 +1,10 @@
+---
+- name: using condition in my playbook.
+  hosts: dev
+  become: true
+  tasks:
+    - name: installing httpd
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      when: ansible_facts.hostname == "worker01" or ansible_facts.hostname == "worker02"
