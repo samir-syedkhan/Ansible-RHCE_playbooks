@@ -1,0 +1,9 @@
+---
+- name: copying the file to managed host machine.
+  hosts: all
+  become: true
+  tasks:
+    - name: copying texting.txt to /tmp
+      ansible.builtin.template:
+        src: testing.j2
+        dest: /tmp/testing.txt
